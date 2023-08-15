@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/productupload" method="post" enctype="multipart/form-data">
+        <input type="text" name="productname" placeholder="enter product name">
+        <input type="text" name="productdescription" placeholder="enter product description">
+        <input type="number" name="price" placeholder="enter price">
+        <input type="text" name="category" placeholder="category">
+        <input type="file" name="productimage">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
