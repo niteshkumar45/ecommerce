@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            border-radius: 5px;
+        }
+        main{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        .product{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            border-radius: 5px;
+            background-color: aqua;
+        }
+        .name{
+            font-size: 23px;
+        }
+        .description{
+            font-size: 19px;
+        }
+        .price{
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+        <h1>All Products</h1>
+    <main>
+        <% products.forEach((product)=>{ %>
+            <div class="product">
+                <img src="../<%= product.imageurl %>" alt="shirt">
+                <!-- <span><%= product.imageurl %></span> -->
+                <div class="name"><%= product.productname %></div>
+                <div class="description"><%= product.productdescription %></div>
+                <div class="price">RS. <%= product.price %></div>
+                <a href="/removeitemfromstock/<%= product._id %>">Remove Item</a>
+                <a href="/updateitem/<%= product._id %>">Update Item</a>
+            </div>
+        <% }) %> 
+    </main>
+</body>
+</html>

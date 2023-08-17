@@ -145,4 +145,40 @@ const remove = async (req,res)=>{
     }
 }
 
-module.exports = {remove,addtocart,signup,signuppost,home,login,loginpost,admin,productupload,cart}
+const allproducts = async (req,res)=>{
+    const getproducts = await Product.find()
+    res.render('allproducts',{products:getproducts})
+}
+
+const removeitemfromstock = async (req,res)=>{
+    try{
+        const checkproduct = await Product.findByIdAndDelete(req.params.id)
+        if(!checkproduct){
+            return res.send("the product is not find")
+        }else{
+            res.send("the product is deleted")
+        }
+    }catch{
+        res.status(501).send("there is an error while removing item from stock")
+    }
+}
+
+const updateitem = async (req,res)=>{
+    try{
+        const fetchproduct = await Product.findById(req.params.id)
+        if(!fetchproduct){
+            return res.send("internal server error")
+        }
+        res.render('updateitem',{product:fetchproduct})
+    }catch{
+        res.status(501).send("please try again after some time")
+    }
+}
+
+const updateitempost = async (req,res)=>{
+    console.log("update item body is ",req.body);
+    console.log("image name is ",req.file.filename);
+    res.send("wait")
+}
+
+module.exports = {updateitempost,updateitem,removeitemfromstock,allproducts,remove,addtocart,signup,signuppost,home,login,loginpost,admin,productupload,cart}

@@ -18,4 +18,9 @@ router.post("/productupload",multerconfig,usercontroller.productupload)
 router.get("/addtocart/:id",Auth,usercontroller.addtocart)
 router.get("/remove/:id",Auth,usercontroller.remove)
 router.get("/mycart",Auth,usercontroller.cart)
+
+router.get("/admin/allproducts",usercontroller.allproducts)
+router.get("/removeitemfromstock/:id",usercontroller.removeitemfromstock)
+router.get("/updateitem/:id",usercontroller.updateitem)
+router.post("/updateitem/:id",multerconfig,usercontroller.updateitempost)
 module.exports = router
